@@ -40,6 +40,7 @@ db.getConnection((err, connection) => {
 // Routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/dashboard", require("./routes/dashboardRoutes"));
+app.use("/api", require("./routes/statsRoutes"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
