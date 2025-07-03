@@ -7,10 +7,14 @@ const db = require("./db");
 
 const app = express();
 
+// Make db accessible in routes via req.app.get('db')
+app.set("db", db);
+
 const allowedOrigins = [
   "http://localhost:5173", // local dev
   "https://jdmarc-frontend.vercel.app", // example deployed frontend
-  "https://your-frontend-domain.com" // add your real frontend domain here
+  "https://your-frontend-domain.com", // add your real frontend domain here
+  "https://jdmarcng.com" // production domain
 ];
 
 app.use(cors({

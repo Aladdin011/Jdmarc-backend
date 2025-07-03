@@ -22,4 +22,21 @@ router.get("/dashboard/stats", verifyToken, async (req, res) => {
   });
 });
 
+// GET /api/admin/stats
+router.get("/admin/stats", verifyToken, async (req, res) => {
+  try {
+    const [rows] = await req.app.get("db").promise().query(
+      `SELECT 
+        SUM(role = 'admin') AS admin, 
+        SUM(role = 'staff') AS staff, 
+        SUM(role = 'employer') AS employer, 
+        COUNT(*) AS total 
+      FROM users`
+    );
+    res.json(rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch stats" });
+  }
+});
+
 module.exports = router;
