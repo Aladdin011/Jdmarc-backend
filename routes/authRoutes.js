@@ -9,10 +9,9 @@ router.post("/register", authController.register);
 // Login route
 router.post("/login", authController.login);
 
-// Test route
-router.get("/test", (req, res) => {
-  res.status(200).json({ message: "✅ Auth route is working!" });
-});
+
+// Verify route
+router.post("/verify", authController.verify);
 
 // Example protected route (replace with your real controller)
 // router.get("/dashboard", verifyToken, dashboardController.view);
