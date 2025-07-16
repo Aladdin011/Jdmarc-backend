@@ -15,7 +15,7 @@ exports.protectAdmin = async (req, res, next) => {
 
     req.user = user;
     next();
-  } catch (err) {
-    return res.status(401).json({ message: "Unauthorized" });
+  } catch (error) {
+    return res.status(401).json({ error: 'Invalid token' });
   }
 };
