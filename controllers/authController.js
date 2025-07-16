@@ -193,7 +193,7 @@ exports.verify = async (req, res) => {
       );
     }
 
-    res.status(200).json({ user: users[0] });
+    res.status(200).json({ user: users[0], token });
   } catch (error) {
     if (error.name === 'JsonWebTokenError') {
       return res.status(401).json(
